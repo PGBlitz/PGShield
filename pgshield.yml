@@ -46,7 +46,6 @@
           traefik.frontend.rule: "Host:oauth.{{domain.stdout}}"
           traefik.frontend.auth.forward.address: "http://oauth:4181"
 
-
     - name: "Setting PG Volumes"
       set_fact:
         pg_volumes:
