@@ -82,8 +82,8 @@ case $typed in
           echo -n "$p," >> /var/plexguide/pgshield.compiled
         done </var/plexguide/pgshield.emails
 
-        ansible-playbook /opt/plexguide/menu/pgshield/pgshield.yml
-        bash /opt/plexguide/menu/pgshield/rebuild.sh
+        ansible-playbook /opt/pgshield/pgshield.yml
+        bash /opt/pgshield/rebuild.sh
         question1 ;;
     z )
         exit ;;
