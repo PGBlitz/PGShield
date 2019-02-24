@@ -22,7 +22,7 @@ domain=$(cat /var/plexguide/server.domain)
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield                        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 💬  PG Shield requires Google Web Auth Keys! Visit the link above!
 
@@ -101,7 +101,7 @@ ls -l /var/plexguide/auth | awk '{ print $9 }' > /var/plexguide/pgshield.ex15
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield - App Exemption        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield ~ App Exemption | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. Application: Exempt
@@ -169,7 +169,7 @@ phase31(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️ PG Shield - App Exemption         📓 Reference: pgshield.plexguide.com
+🛡️  PG Shield ~ App Exemption | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Potential Apps to Exempt
@@ -219,7 +219,7 @@ phase21(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️ PG Shield - App Protect Restore   📓 Reference: pgshield.plexguide.com
+🛡️  PG Shield ~ App Protect Restore | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📂 Potential Apps to Restore
@@ -248,7 +248,7 @@ webid() {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔑 Google Web Keys - Client ID       📓 Reference: pgshield.plexguide.com
+🔑 Google Web Keys - Client ID       📓 Reference: pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Quitting? Type > exit
 NOTE: Visit reference for Google Web Auth Keys
@@ -272,7 +272,7 @@ email() {
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield - Trusted Users        ⚡ Reference: pgshield.plexguide.com
+🛡️  PG Shield ~ Trusted Users | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1. E-Mail: Add User
@@ -351,16 +351,21 @@ shieldcheck() {
   wget -q "https://portainer.${domaincheck}" -O /tmp/portainer.check
   domaincheck=$(cat /tmp/portainer.check)
   if [ "$domaincheck" == "" ]; then
-  echo
-  echo "💬  Unable to reach your Subdomain for Portainer!"
-  echo ""
-  echo "1. Forget to enable Traefik?"
-  echo "2. Valdiate if subdomain is working?"
-  echo "3. Validate Portainer is deployed?"
-  echo "4. oauth.${domain} cname in your DNS?"
-  echo ""
-  read -p 'Confirm Info | Press [ENTER] ' typed < /dev/tty
-  exit; fi
+
+tee <<-EOF
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛡️  PG Shield ~ Unable to talk to Portainer | pgshield.pgblitz.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Did you forget to enable Traefik?"
+2. Valdiate if the portainer subdomain is working?"
+3. Validate Portainer is deployed?"
+4. oauth.${domain} cname in your DNS? (CloudFlare Users)"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EOF
+read -p 'Acknowledge Info | Press [ENTER] ' typed < /dev/tty
+exit; fi
 }
 
 question1
