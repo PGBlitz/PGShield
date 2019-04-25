@@ -60,8 +60,8 @@
           CLIENT_SECRET: "{{clientsecret.stdout}}"
           SECRET: plexguide
           COOKIE_DOMAINS: "{{domain.stdout}}"
-          COOKIE_SECURE: True
-          LIFETIME: 2592000
+          COOKIE_SECURE: "True"
+          LIFETIME: "2592000"
           AUTH_HOST: "oauth.{{domain.stdout}}"
           WHITELIST: "{{whitelisted.stdout}}"
   # MAIN DEPLOYMENT #############################################################
