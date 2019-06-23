@@ -22,6 +22,8 @@ sed -i -e "/oauth/d" /var/plexguide/container.running
 sed -i -e "/watchtower/d" /var/plexguide/container.running
 sed -i -e "/wp-*/d" /var/plexguide/container.running
 sed -i -e "/plex/d" /var/plexguide/container.running
+sed -i -e "/jellyfin/d" /var/plexguide/container.running
+sed -i -e "/emby/d" /var/plexguide/container.running
 sed -i -e "/x2go*/d" /var/plexguide/container.running
 sed -i -e "/authclient/d" /var/plexguide/container.running
 sed -i -e "/dockergc/d" /var/plexguide/container.running
