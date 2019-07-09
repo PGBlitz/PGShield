@@ -28,7 +28,7 @@ tee <<-EOF
 
 [1] Set Web Client ID & Secret
 [2] Authorize User(s)
-[3] Exempt PG Apps
+[3] Protect / UnProtect PG Apps
 [4] Deploy PG Shield
 
 [Z] EXIT
@@ -102,12 +102,12 @@ ls -l /var/plexguide/auth | awk '{ print $9 }' > /var/plexguide/pgshield.ex15
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield ~ App Exemption | http://pgshield.pgblitz.com
+🛡️  PG Shield ~ App Protection | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-1. Application: Exempt
-2. Application: Protect Again
-3. Application: Protect All Apps (Reset)
+1. Disable PGShield for a single app
+2. Enable PGShield for a single app
+3. Reset & Enable PGShield for all apps
 Z. EXIT
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -128,7 +128,7 @@ case $typed in
     3 )
         emptycheck=$(cat /var/plexguide/pgshield.ex15)
         if [[ "$emptycheck" == "" ]]; then echo;
-        read -p 'No Apps are exempt! Exiting | Press [ENTER]'; appexempt; fi
+        read -p 'No Apps have PGShield Disabled! Exiting | Press [ENTER]'; appexempt; fi
         rm -rf /var/plexguide/auth/*
         echo ""
         echo "NOTE: Does not take effect until PG Shield is redeployed!"
@@ -170,16 +170,16 @@ phase31(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield ~ App Exemption | http://pgshield.pgblitz.com
+🛡️  PG Shield ~ Disable Shield for an app | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Potential Apps to Exempt
+📂 Apps currently protected by PGShield:
 
 $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍 Type APP to Exempt | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Type APP to disable PGShield | Press [ENTER]: ' typed < /dev/tty
 
 if [[ "$typed" == "exit" ]]; then appexempt; fi
 
@@ -220,16 +220,16 @@ phase21(){
 tee <<-EOF
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🛡️  PG Shield ~ App Protect Restore | http://pgshield.pgblitz.com
+🛡️  PG Shield ~ Enable Shield for an app | http://pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-📂 Potential Apps to Restore
+📂 Apps NOT currently protected by PGShield:
 
 $notrun
 
 💬 Quitting? TYPE > exit
 EOF
-  read -p '🌍 Type app to restore | Press [ENTER]: ' typed < /dev/tty
+  read -p '🌍 Type app to enable PGShield | Press [ENTER]: ' typed < /dev/tty
 
   if [[ "$typed" == "exit" ]]; then appexempt; fi
 
