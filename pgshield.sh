@@ -31,7 +31,7 @@ tee <<-EOF
 [3] Protect / UnProtect PG Apps
 [4] Deploy PG Shield
 
-[Z] EXIT
+[Z] Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -108,7 +108,7 @@ tee <<-EOF
 1. Disable PGShield for a single app
 2. Enable PGShield for a single app
 3. Reset & Enable PGShield for all apps
-Z. EXIT
+Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -280,7 +280,7 @@ tee <<-EOF
 2. E-Mail: Remove User
 3. E-Mail: View Authorization List
 4. E-Mail: Remove All Users (Stops PG Shield)
-Z. EXIT
+Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
