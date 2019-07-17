@@ -6,76 +6,75 @@
 # GNU:        General Public License v3.0
 ################################################################################
 ---
-  - hosts: localhost
-    gather_facts: false
-    tasks:
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    # FACTS #######################################################################
 
-  # FACTS #######################################################################
-
-    - name: "Set Known Facts"
+    - name: 'Set Known Facts'
       set_fact:
-        pgrole: "oauth"
-        intport: "4181"
-        extport: "4181"
-        image: "thomseddon/traefik-forward-auth"
+        pgrole: 'oauth'
+        intport: '4181'
+        extport: '4181'
+        image: 'thomseddon/traefik-forward-auth'
 
-  # CORE (MANDATORY) ############################################################
+    # CORE (MANDATORY) ############################################################
     - name: CronJob Role
-      include_tasks: "/opt/coreapps/apps/_core.yml"
+      include_tasks: '/opt/coreapps/apps/_core.yml'
 
     - name: Register Auth Path
-      shell: "cat /var/plexguide/shield.clientid"
+      shell: 'cat /var/plexguide/shield.clientid'
       register: clientid
 
     - name: Register Auth Path
-      shell: "cat /var/plexguide/shield.clientsecret"
+      shell: 'cat /var/plexguide/shield.clientsecret'
       register: clientsecret
 
     - name: Register WhiteListed E-Mails
-      shell: "cat /var/plexguide/pgshield.compiled"
+      shell: 'cat /var/plexguide/pgshield.compiled'
       register: whitelisted
 
-  # LABELS ######################################################################
+    # LABELS ######################################################################
 
-    - name: "Setting PG Labels"
+    - name: 'Setting PG Labels'
       set_fact:
         pg_labels:
-          traefik.enable: "true"
-          traefik.port: "4181"
-          traefik.backend: "oauth"
-          traefik.frontend.rule: "Host:oauth.{{domain.stdout}}"
-          traefik.frontend.auth.forward.address: "http://oauth:4181"
+          traefik.enable: 'true'
+          traefik.port: '4181'
+          traefik.backend: 'oauth'
+          traefik.frontend.rule: 'Host:oauth.{{domain.stdout}}'
+          traefik.frontend.auth.forward.address: 'http://oauth:4181'
 
-    - name: "Setting PG Volumes"
+    - name: 'Setting PG Volumes'
       set_fact:
         pg_volumes:
-          - "/etc/localtime:/etc/localtime:ro"
+          - '/etc/localtime:/etc/localtime:ro'
 
-    - name: "Setting PG ENV"
+    - name: 'Setting PG ENV'
       set_fact:
         pg_env:
-          PUID: "1000"
-          PGID: "1000"
-          CLIENT_ID: "{{clientid.stdout}}"
-          CLIENT_SECRET: "{{clientsecret.stdout}}"
+          PUID: '1000'
+          PGID: '1000'
+          CLIENT_ID: '{{clientid.stdout}}'
+          CLIENT_SECRET: '{{clientsecret.stdout}}'
           SECRET: plexguide
-          COOKIE_DOMAINS: "{{domain.stdout}}"
-          COOKIE_SECURE: "True"
-          LIFETIME: "2592000"
-          AUTH_HOST: "oauth.{{domain.stdout}}"
-          WHITELIST: "{{whitelisted.stdout}}"
-  # MAIN DEPLOYMENT #############################################################
+          COOKIE_DOMAINS: '{{domain.stdout}}'
+          COOKIE_SECURE: 'True'
+          LIFETIME: '2592000'
+          AUTH_HOST: 'oauth.{{domain.stdout}}'
+          WHITELIST: '{{whitelisted.stdout}}'
+    # MAIN DEPLOYMENT #############################################################
 
-    - name: "Deploying Container - {{pgrole}}"
+    - name: 'Deploying Container - {{pgrole}}'
       docker_container:
-        name: "{{pgrole}}"
-        image: "{{image}}"
-        pull: "yes"
-        env: "{{pg_env}}"
+        name: '{{pgrole}}'
+        image: '{{image}}'
+        pull: 'yes'
+        env: '{{pg_env}}'
         restart_policy: unless-stopped
         networks:
           - name: plexguide
             aliases:
-              - "plexguide"
+              - 'plexguide'
         state: started
-        labels: "{{pg_labels}}"
+        labels: '{{pg_labels}}'
