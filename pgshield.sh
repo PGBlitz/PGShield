@@ -200,11 +200,11 @@ phase31() {
 
 $notrun
 
-💬 Quitting? TYPE > q or exit
+💬 To quit, type >>> z or exit
 EOF
   read -p '🌍 Type APP to disable PGShield | Press [ENTER]: ' typed </dev/tty
 
-  if [[ "$typed" == "exit" || "$typed" == "EXIT" || "$typed" == "EXIT" || "$typed" == "q" || "$typed" == "Q" ]]; then appexempt; fi
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then appexempt; fi
 
   grep -w "$typed" /var/plexguide/program.temp >/var/plexguide/check55.sh
   usercheck=$(cat /var/plexguide/check55.sh)
@@ -257,11 +257,11 @@ phase21() {
 
 $notrun
 
-💬 Quitting? TYPE > q or exit
+💬 To quit, type >>> z or exit
 EOF
   read -p '🌍 Type app to enable PGShield | Press [ENTER]: ' typed </dev/tty
 
-  if [[ "$typed" == "exit" || "$typed" == "EXIT" || "$typed" == "EXIT" || "$typed" == "q" || "$typed" == "Q" ]]; then appexempt; fi
+  if [[ "$typed" == "exit" || "$typed" == "Exit" || "$typed" == "EXIT" || "$typed" == "z" || "$typed" == "Z" ]]; then appexempt; fi
 
   grep -w "$typed" /var/plexguide/pgshield.ex15 >/var/plexguide/check55.sh
   usercheck=$(cat /var/plexguide/check55.sh)
@@ -285,7 +285,7 @@ webid() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔑 Google Web Keys - Client ID       📓 Reference: pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Quitting? TYPE > q or exit
+To quit, type >>> z or exit
 NOTE: Visit reference for Google Web Auth Keys
 
 EOF
