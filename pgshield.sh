@@ -200,7 +200,7 @@ phase31() {
 
 $notrun
 
-💬 To quit, type >>> z or exit
+💬 [Z] Exit
 EOF
   read -p '🌍 Type APP to disable PGShield | Press [ENTER]: ' typed </dev/tty
 
@@ -257,7 +257,7 @@ phase21() {
 
 $notrun
 
-💬 To quit, type >>> z or exit
+💬 [Z] Exit
 EOF
   read -p '🌍 Type app to enable PGShield | Press [ENTER]: ' typed </dev/tty
 
@@ -285,7 +285,7 @@ webid() {
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 🔑 Google Web Keys - Client ID       📓 Reference: pgshield.pgblitz.com
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-To quit, type >>> z or exit
+[Z] Exit
 NOTE: Visit reference for Google Web Auth Keys
 
 EOF
