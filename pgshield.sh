@@ -409,7 +409,12 @@ shieldcheck() {
   touch /var/plexguide/server.domain
   touch /tmp/portainer.check
   rm -r /tmp/portainer.check
-  wget -q "https://portainer.${domaincheck}" -O /tmp/portainer.check
+  cname="portainer"
+  if [[ -f "/var/plexguide/portainer.cname" ]]; then
+    cname=$(cat "/var/plexguide/portainer.cname")
+  fi
+
+  wget -q "https://${cname}.${domaincheck}" -O /tmp/portainer.check
   domaincheck=$(cat /tmp/portainer.check)
   if [ "$domaincheck" == "" ]; then
 
