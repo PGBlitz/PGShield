@@ -125,6 +125,7 @@ appexempt() {
 Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   phase3
 }
@@ -328,6 +329,7 @@ email() {
 Z. Exit
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
   phase2
 }
@@ -429,6 +431,7 @@ shieldcheck() {
 3. Validate Portainer is deployed?"
 4. oauth.${domain} cname in your DNS? (CloudFlare Users)"
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
 EOF
     read -p 'Acknowledge Info | Press [ENTER] ' typed </dev/tty
     exit
