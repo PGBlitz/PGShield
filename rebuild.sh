@@ -37,7 +37,7 @@ tee <<-EOF
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	⚠️  PG Shield - Rebuilding Containers!
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+	
 EOF
 sleep 1.5
 for ((i = 1; i < $count + 1; i++)); do
@@ -50,8 +50,9 @@ for ((i = 1; i < $count + 1; i++)); do
 		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 		
 	EOF
-	sleep 1.5
 	echo "$app" >/tmp/program_var
+	sleep 1.5
+
 	if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
 	if [ -e "/opt/communityapps/apps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
 done
