@@ -26,9 +26,13 @@
       shell: 'cat /var/plexguide/shield.clientid'
       register: clientid
 
-    - name: Register Auth Path
+    - name: Register Client Secret
       shell: 'cat /var/plexguide/shield.clientsecret'
       register: clientsecret
+
+    - name: Register Secret
+      shell: 'openssl rand -hex 16'
+      register: secret
 
     - name: Register WhiteListed E-Mails
       shell: 'cat /var/plexguide/pgshield.compiled'
@@ -57,8 +61,8 @@
           PGID: '1000'
           CLIENT_ID: '{{clientid.stdout}}'
           CLIENT_SECRET: '{{clientsecret.stdout}}'
-          SECRET: plexguide
-          COOKIE_DOMAINS: '{{domain.stdout}}'
+          SECRET: '{{secret.stdout}}'
+          COOKIE_DOMAIN: '{{domain.stdout}}'
           COOKIE_SECURE: 'True'
           LIFETIME: '2592000'
           AUTH_HOST: 'oauth.{{domain.stdout}}'
