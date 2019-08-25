@@ -15,40 +15,40 @@
 #   under the GPL along with build & install instructions.
 #
 #################################################################################
-docker ps -a --format "{{.Names}}" >/var/plexguide/container.running
+docker ps -a --format "{{.Names}}" >/pg/var/container.running
 
-sed -i -e "/traefik/d" /var/plexguide/container.running
-sed -i -e "/oauth/d" /var/plexguide/container.running
-sed -i -e "/watchtower/d" /var/plexguide/container.running
-sed -i -e "/wp-*/d" /var/plexguide/container.running
-sed -i -e "/plex/d" /var/plexguide/container.running
-sed -i -e "/jellyfin/d" /var/plexguide/container.running
-sed -i -e "/emby/d" /var/plexguide/container.running
-sed -i -e "/x2go*/d" /var/plexguide/container.running
-sed -i -e "/authclient/d" /var/plexguide/container.running
-sed -i -e "/dockergc/d" /var/plexguide/container.running
+sed -i -e "/traefik/d" /pg/var/container.running
+sed -i -e "/oauth/d" /pg/var/container.running
+sed -i -e "/watchtower/d" /pg/var/container.running
+sed -i -e "/wp-*/d" /pg/var/container.running
+sed -i -e "/plex/d" /pg/var/container.running
+sed -i -e "/jellyfin/d" /pg/var/container.running
+sed -i -e "/emby/d" /pg/var/container.running
+sed -i -e "/x2go*/d" /pg/var/container.running
+sed -i -e "/authclient/d" /pg/var/container.running
+sed -i -e "/dockergc/d" /pg/var/container.running
 
-count=$(wc -l </var/plexguide/container.running)
+count=$(wc -l </pg/var/container.running)
 ((count++))
 ((count--))
 
 tee <<-EOF
-	
+
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	⚠️  PG Shield - Rebuilding Containers!
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	
+
 EOF
 sleep 1.5
 for ((i = 1; i < $count + 1; i++)); do
-	app=$(sed "${i}q;d" /var/plexguide/container.running)
+	app=$(sed "${i}q;d" /pg/var/container.running)
 
 	tee <<-EOF
-		
+
 		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 		↘️  PG Shield - Rebuilding [$app]
 		━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-		
+
 	EOF
 	echo "$app" >/tmp/program_var
 	sleep 1.5
@@ -62,6 +62,6 @@ tee <<-EOF
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 	✅️  PG Shield - All Containers Rebuilt!
 	━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-	
+
 EOF
 read -p 'Continue? | Press [ENTER] ' name </dev/tty
