@@ -53,8 +53,7 @@ for ((i = 1; i < $count + 1; i++)); do
 	echo "$app" >/tmp/program_var
 	sleep 1.5
 
-	if [ -e "/opt/coreapps/apps/$app.yml" ]; then ansible-playbook /opt/coreapps/apps/$app.yml; fi
-	if [ -e "/opt/communityapps/apps/$app.yml" ]; then ansible-playbook /opt/communityapps/apps/$app.yml; fi
+	if [ -e "/pg/apps/programs/$app/start.sh" ]; then /pg/apps/programs/$app/start.sh; fi
 done
 
 echo ""

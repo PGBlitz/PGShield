@@ -92,8 +92,8 @@ phase1() {
       echo -n "$p," >>/pg/var/pgshield.compiled
     done </pg/var/pgshield.emails
 
-    ansible-playbook /opt/pgshield/pgshield.yml
-    bash /opt/pgshield/rebuild.sh
+    ansible-playbook /pg/pgshield/pgshield.yml
+    bash /pg/pgshield/rebuild.sh
     question1
     ;;
   z)
@@ -109,8 +109,7 @@ phase1() {
 }
 
 appexempt() {
-  bash /opt/coreapps/apps/_appsgen.sh
-  bash /opt/communityapps/apps/_appsgen.sh
+  bash /pg/apps/_appsgen.sh
   ls -l /pg/var/auth | awk '{ print $9 }' >/pg/var/pgshield.ex15
 
   tee <<-EOF
