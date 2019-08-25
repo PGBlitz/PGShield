@@ -20,7 +20,7 @@
 
     # CORE (MANDATORY) ############################################################
     - name: CronJob Role
-      include_tasks: '/opt/coreapps/apps/_core.yml'
+      include_tasks: '/pg/apps/_core.yml'
 
     - name: Register Auth Path
       shell: 'cat /pg/var/shield.clientid'
