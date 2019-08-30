@@ -63,7 +63,7 @@
           CLIENT_SECRET: '{{clientsecret.stdout}}'
           SECRET: '{{secret.stdout}}'
           COOKIE_DOMAIN: '{{domain.stdout}}'
-          COOKIE_SECURE: 'True'
+          INSECURE_COOKIE: 'True'
           LIFETIME: '2592000'
           AUTH_HOST: 'oauth.{{domain.stdout}}'
           WHITELIST: '{{whitelisted.stdout}}'
