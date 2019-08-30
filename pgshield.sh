@@ -105,6 +105,11 @@ phase1() {
     done </pg/var/pgshield.emails
 
     ansible-playbook /pg/pgshield/pgshield.yml
+
+    pgstatus=$(docker ps | grep "\<thomseddon\>" | awk '{ print $2}')
+    if [[ "$pgstatus" != "" ]]; then touch /pg/var/oauth.exists
+    else rm -rf /pg/var/oauth.exists; fi
+
     bash /pg/pgshield/rebuild.sh
     question1
     ;;
