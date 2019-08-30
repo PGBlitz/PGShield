@@ -81,4 +81,4 @@
             aliases:
               - 'plexguide'
         state: started
-        labels: 'oauth'
+        labels: '{{pg_labels}}'
