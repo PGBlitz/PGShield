@@ -44,7 +44,6 @@ question1() {
 [2] Authorize User(s)
 [3] Protect / UnProtect PG Apps
 [4] Deploy PG Shield
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 [Z] Exit
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 EOF
@@ -318,6 +317,7 @@ EOF
   if [ "$secret" = "exit" ]; then question1; fi
   echo "$secret" >/pg/var/shield.clientsecret
 
+  echo ""
   read -p '🔑 Client ID & Secret Set |  Press [ENTER] ' public </dev/tty
   touch /pg/var/auth.idset
   question1
