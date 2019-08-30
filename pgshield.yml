@@ -14,8 +14,8 @@
     - name: 'Set Known Facts'
       set_fact:
         pgrole: 'oauth'
-        intport: '4181'
-        extport: '4181'
+        int1: '4181'
+        ext1: '4181'
         image: 'thomseddon/traefik-forward-auth'
 
     # CORE (MANDATORY) ############################################################
