@@ -222,7 +222,7 @@ EOF
   touch /pg/var/auth/$typed
   echo
   echo "NOTE: No effect until PGShield or the app is redeployed!"
-  read -p '🌍 Acknoweldge! | Press [ENTER] ' note </dev/tty
+  read -p '🌍 Acknowledge! | Press [ENTER] ' note </dev/tty
   appexempt
 }
 
