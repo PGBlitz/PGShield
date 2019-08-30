@@ -44,9 +44,9 @@
       set_fact:
         pg_labels:
           traefik.enable: 'true'
-          traefik.port: '4181'
+          traefik.port: '{{int1}}'
           traefik.backend: 'oauth'
-          traefik.frontend.rule: 'Host:oauth.{{domain.stdout}}'
+          traefik.frontend.rule: 'Host:oauth.{{domain}}'
           traefik.frontend.auth.forward.address: 'http://oauth:4181'
 
     - name: 'Setting PG Volumes'
