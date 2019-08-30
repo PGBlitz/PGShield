@@ -13,7 +13,6 @@
 
     - name: 'Set Known Facts'
       set_fact:
-        pgrole: 'oauth'
         int1: '4181'
         ext1: '4181'
         image: 'thomseddon/traefik-forward-auth'
@@ -69,9 +68,9 @@
           WHITELIST: '{{whitelisted.stdout}}'
     # MAIN DEPLOYMENT #############################################################
 
-    - name: 'Deploying Container - {{pgrole}}'
+    - name: 'Deploying Container - oauth'
       docker_container:
-        name: '{{pgrole}}'
+        name: 'oauth'
         image: '{{image}}'
         pull: 'yes'
         env: '{{pg_env}}'
