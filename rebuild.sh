@@ -8,7 +8,7 @@
 docker ps -a --format "{{.Names}}" >/pg/var/container.running
 
 chown 1000:1000 -R /pg/apps
-chmod 0755 -R /pgapps
+chmod 0755 -R /pg/apps
 
 sed -i -e "/traefik/d" /pg/var/container.running
 sed -i -e "/oauth/d" /pg/var/container.running
