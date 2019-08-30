@@ -1,21 +1,14 @@
 #!/bin/bash
 #
-# [Rebuilding Containers]
-#
-# GitHub:   https://github.com/PGBlitz/PGBlitz.com
-# Author:   Admin9705 - Deiteq
-# URL:      https://pgblitz.com
-#
-# PGBlitz Copyright (C) 2018 PGBlitz.com
-# Licensed under GNU General Public License v3.0 GPL-3 (in short)
-#
-#   You may copy, distribute and modify the software as long as you track
-#   changes/dates in source files. Any modifications to our software
-#   including (via compiler) GPL-licensed code must also be made available
-#   under the GPL along with build & install instructions.
-#
-#################################################################################
+# Title:      PGBlitz (Reference Title File)
+# Author(s):  Admin9705
+# URL:        https://pgblitz.com - http://github.pgblitz.com
+# GNU:        General Public License v3.0
+################################################################################
 docker ps -a --format "{{.Names}}" >/pg/var/container.running
+
+chown 1000:1000 -R /pg/apps
+chmod 0755 -R /pgapps
 
 sed -i -e "/traefik/d" /pg/var/container.running
 sed -i -e "/oauth/d" /pg/var/container.running
@@ -51,7 +44,7 @@ for ((i = 1; i < $count + 1; i++)); do
 
 	EOF
 	echo "$app" >/tmp/program_var
-	sleep 1.5
+	sleep .5
 
 	if [ -e "/pg/apps/programs/$app/start.sh" ]; then /pg/apps/programs/$app/start.sh; fi
 done
