@@ -5,7 +5,21 @@
 # URL:        https://pgblitz.com - http://github.pgblitz.com
 # GNU:        General Public License v3.0
 ################################################################################
-source /opt/plexguide/menu/functions/functions.sh
+badinput() {
+  echo
+  read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed </dev/tty
+}
+
+badinput1() {
+  echo
+  read -p '⛔️ ERROR - Bad Input! | Press [ENTER] ' typed </dev/tty
+  question1
+}
+
+variable() {
+  file="$1"
+  if [ ! -e "$file" ]; then echo "$2" >$1; fi
+}
 
 question1() {
   touch /pg/var/auth.bypass
